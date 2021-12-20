@@ -11,11 +11,14 @@
 const dependencies = document.querySelector('#pkgdepslist')
 const dependenceList = dependencies.querySelectorAll('li')
 
-window.getDependecies = () => {
+window.getOptDependecies = () => {
 	let depsString = ''
 	dependenceList.forEach(dep => {
-		depsString += ` ${dep.children[0].innerText}`
+    
+    elementChildren = dep.children
+    if(elementChildren[1] && elementChildren[1].className == 'opt-dep') {
+        depsString += ` ${dep.children[0].innerText}`
+    }    		
 	})
-	
 	console.log(depsString)
 }
